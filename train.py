@@ -62,6 +62,8 @@ if __name__ ==  "__main__":
     lr = 1e-4
 
     num_epochs = 20
+    model_path = "/home/ec2-user/model.h5"
+
 
     train_data_path = "/home/ec2-user/kitchen/polygon/train/"
     valid_data_path = "/home/ec2-user/kitchen/polygon/test/"
@@ -96,4 +98,3 @@ if __name__ ==  "__main__":
         callbacks=callbacks
     ) 
 
-    model_path = "/home/ec2-user/model.h5"
