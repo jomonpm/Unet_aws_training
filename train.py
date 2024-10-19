@@ -65,8 +65,8 @@ if __name__ ==  "__main__":
     model_path = "/home/ec2-user/model.h5"
 
 
-    train_data_path = "/home/ec2-user/kitchen/polygon/train/"
-    valid_data_path = "/home/ec2-user/kitchen/polygon/test/"
+    train_data_path = "/home/ec2-user/polygon/train/"
+    valid_data_path = "/home/ec2-user/polygon/test/"
     train_x, train_y = load_dataset(train_data_path) #loading dataset path
     valid_x, valid_y = load_dataset(valid_data_path)
     train_dataset = tf_dataset(train_x, train_y, batch_size)
