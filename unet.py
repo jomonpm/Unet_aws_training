@@ -2,6 +2,17 @@ import tensorflow as tf
 import numpy as np 
 from PIL import Image 
 from tensorflow.keras.preprocessing import image 
+from tensorflow.keras.layers import Layer
+
+
+class ResizeLayer(Layer):
+    def __init__(self, target_size):
+        super(ResizeLayer, self).__init__()  # Initialize the parent class
+        self.target_size = target_size       # Store the target size for resizing
+
+    def call(self, inputs):
+        # The inputs argument is 'encoder_val' passed at the time of calling
+        return tf.image.resize(inputs, self.target_size)
 
 def convol_relu(input, num_filters):
     x = tf.keras.layers.Conv2D(num_filters, (3,3), padding = 'same')(input)
@@ -20,7 +31,10 @@ def up_conv(input, num_filters):
     return x
 
 def concatination(decoder_val, encoder_val):
-    encoder_val = tf.image.resize(encoder_val, size = (decoder_val.shape[1],decoder_val.shape[2])) 
+    target_size = (decoder_val.shape[1], decoder_val.shape[2])
+    #encoder_val = tf.image.resize(encoder_val, size = (decoder_val.shape[1],decoder_val.shape[2])) 
+    encoder_val = ResizeLayer(target_size)(encoder_val)
+
     concat_img = tf.keras.layers.Concatenate()([decoder_val, encoder_val])
     return concat_img
 
