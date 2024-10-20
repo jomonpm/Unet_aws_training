@@ -58,15 +58,15 @@ def tf_dataset(image_path, mask_path, batch_size):
     
 if __name__ ==  "__main__":
 
-    batch_size = 1
+    batch_size = 2
     lr = 1e-4
 
     num_epochs = 20
-    model_path = "/home/ec2-user/model.h5"
+    model_path = "files/model.keras"
 
 
-    train_data_path = "/home/ec2-user/polygon/train/"
-    valid_data_path = "/home/ec2-user/polygon/test/"
+    train_data_path = "/home/jomon/Downloads/kitchen/polygon/train"
+    valid_data_path = "/home/jomon/Downloads/kitchen/polygon/test"
     train_x, train_y = load_dataset(train_data_path) #loading dataset path
     valid_x, valid_y = load_dataset(valid_data_path)
     train_dataset = tf_dataset(train_x, train_y, batch_size)
