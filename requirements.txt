@@ -1,0 +1,4 @@
+tensorflow>=2.13,<3
+tensorboard>=2.13
+opencv-python>=4.8
+numpy>=1.24
